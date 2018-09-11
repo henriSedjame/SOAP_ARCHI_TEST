@@ -3,6 +3,7 @@ package com.shj.formation.soa;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.time.Year;
+import java.util.concurrent.ThreadLocalRandom;
 
 @WebService(serviceName = "LifeLeft")
 public class LifeLeftService {
@@ -25,5 +26,14 @@ public class LifeLeftService {
     return "Bonjour " + prenom + ", il vous reste " + anneeRestantes + " ans à vivre, profitez-en au maximum !";
   }
 
+  @WebMethod
+  public int creerClient(String login, String password) {
+    return ThreadLocalRandom.current().nextInt(100, 900);
+  }
+
+  @WebMethod
+  public String compteARebours(Integer id) {
+    return "Compte à rebours validée pour le client : " + id + ".";
+  }
 }
 
